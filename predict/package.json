@@ -1,0 +1,21 @@
+{
+    "name": "predict",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git"
+    },
+    "author": "Iren Lorenzo Fonseca",
+    "license": "ISC",
+    "bugs": {
+    },
+    "dependencies": {
+        "@tensorflow/tfjs": "^4.22.0",
+        "@tensorflow/tfjs-backend-wasm": "^4.22.0",
+        "express": "^5.1.0"
+    }
+}

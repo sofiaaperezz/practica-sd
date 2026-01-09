@@ -1,3 +1,0 @@
-[submodule "predict"]
-	path = predict
-	url = https://github.com/irenfonseca/predict.git
