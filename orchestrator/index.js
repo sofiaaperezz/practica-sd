@@ -17,7 +17,7 @@ app.post("/run", async (req, res) => {
     const predictRes = await axios.post("http://predict:3002/predict", {
       features,
       meta: {
-        featureCount: features.length, // 👈 ESTO ES LO QUE FALTABA
+        featureCount: features.length, 
         dataId,
         source: "orchestrator"
       }
