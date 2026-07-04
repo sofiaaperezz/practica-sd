@@ -18,6 +18,8 @@ app.get("/health", (req, res) => {
 });
 
 app.post("/data", async (req, res) => {
+  console.log(">>> HA ENTRADO EN /data");
+
   try {
     const now = new Date();
     let targetDate = new Date(now);
@@ -57,9 +59,21 @@ app.post("/data", async (req, res) => {
       source: "acquire"
     };
 
+    console.log("Documento que se va a insertar:");
+    console.log(doc);
+
     const result = await db
       .collection("prepared_samples")
       .insertOne(doc);
+
+    console.log("Documento insertado correctamente");
+    console.log("insertedId:", result.insertedId);
+
+    const total = await db
+      .collection("prepared_samples")
+      .countDocuments();
+
+    console.log("Número total de documentos:", total);
 
     res.status(201).json({
       dataId: result.insertedId,
@@ -68,8 +82,11 @@ app.post("/data", async (req, res) => {
       scalerVersion: "v1",
       createdAt: doc.createdAt
     });
+
   } catch (err) {
+    console.error("ERROR EN /data");
     console.error(err);
+
     res.status(500).json({
       error: "El servicio Acquire dejó de funcionar"
     });
